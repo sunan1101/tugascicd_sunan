@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunan M K K - Japanese Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    body {
+      background: linear-gradient(#0b0b0f, #1a1a2e);
+      color: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    header h1 {
+      color: #ff4d6d;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff4d6d;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 100px 20px;
+      position: relative;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      animation: fadeDown 1.5s ease;
+    }
+
+    .hero span {
+      color: #ff4d6d;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      opacity: 0;
+      animation: fadeUp 2s forwards;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #e63950;
+      transform: scale(1.1);
+    }
+
+    /* ABOUT */
+    .about {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: 1s;
+    }
+
+    .about.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* PROJECT */
+    .projects {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      transition: 0.4s;
+      backdrop-filter: blur(5px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      background: rgba(255,77,109,0.2);
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+    }
+
+    /* Sakura Animation */
+    .sakura {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      background: pink;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) translateX(50px);
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Sunan M K K</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Project</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <h2>こんにちは、<span>Sunan M K K</span></h2>
+  <p>Web Developer • Japanese Style Design</p>
+  <button class="btn" onclick="scrollToSection('contact')">連絡する</button>
+</section>
+
+<section id="about">
+  <div class="about">
+    <h2>私について</h2>
+    <p>Saya adalah developer dengan gaya desain terinspirasi dari estetika Jepang: minimalis, elegan, dan fokus pada pengalaman pengguna.</p>
+  </div>
+</section>
+
+<section id="projects" class="projects">
+  <h2>プロジェクト</h2>
+
+  <div class="card">
+    <h3>🌸 Website Jepang</h3>
+    <p>Desain website dengan nuansa sakura dan animasi lembut.</p>
+  </div>
+
+  <div class="card">
+    <h3>🏯 Landing Page Anime</h3>
+    <p>Landing page bertema anime modern dengan UI interaktif.</p>
+  </div>
+
+  <div class="card">
+    <h3>🎌 UI Minimal Jepang</h3>
+    <p>Interface bersih dengan warna khas Jepang.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>連絡先</h2>
+  <p>Email: sunan@example.com</p>
+  <p>WhatsApp: 08xxxxxxxxxx</p>
+</section>
+
+<footer>
+  <p>© 2026 Sunan M K K</p>
+</footer>
+
+<script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+
+  // Scroll animation
+  window.addEventListener('scroll', () => {
+    const about = document.querySelector('.about');
+    const pos = about.getBoundingClientRect().top;
+    const screen = window.innerHeight;
+
+    if (pos < screen - 100) {
+      about.classList.add('show');
+    }
+  });
+
+  // Sakura generator
+  function createSakura() {
+    const sakura = document.createElement('div');
+    sakura.classList.add('sakura');
+    sakura.style.left = Math.random() * window.innerWidth + 'px';
+    sakura.style.animationDuration = (3 + Math.random() * 5) + 's';
+
+    document.body.appendChild(sakura);
+
+    setTimeout(() => {
+      sakura.remove();
+    }, 8000);
+  }
+
+  setInterval(createSakura, 300);
+</script>
+
+</body>
+</html>
